@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Wise Offers</title>
+    <link rel="stylesheet" href="{% static 'css/user-shop-wise-offers.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Shop Wise Offers</h1>
+    </header>
+
+    <main>
+    
+        <section id="select-shop">
+            <h2>Select a Shop Name</h2>
+            <select name="selectedshop" class="shop-select" id="shop-select" onchange="displayShopDetails()">
+                <option value="">Choose a Shop Name</option>
+                {% for off in offer %}
+                <option value="{{ off.offershopname }}" data-location="{{ off.offershoplocation }}"
+                    data-category="{{ off.offercategory }}" data-title="{{ off.offertitle }}" data-description="{{ off.offerdescription }}"
+                    data-startdate="{{ off.offerstartdate }}" data-enddate="{{ off.offerenddate }}">
+                    {{ off.offershopname }}
+                </option>
+                {% endfor %}
+            </select>
+        </section>
+        
+        <section id="shop-details">
+            <h2>Available Offers</h2>
+            <div id="shop-info">
+                <p><strong>Shop Name:</strong> <span id="shop-name">-</span></p>
+                <p><strong>Shop Location:</strong> <span id="shop-location">-</span></p>
+                <p><strong>Category:</strong> <span id="shop-category">-</span></p>
+                <p><strong>Title:</strong> <span id="title">-</span></p>
+                <p><strong>Offer:</strong> <span id="shop-description">-</span></p>
+                <p><strong>Offer Start Date:</strong> <span id="start-date">-</span></p>
+                <p><strong>Offer End Date:</strong> <span id="end-date">-</span></p>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 GRR Mall. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function displayShopDetails() {
+                var selectElement = document.getElementById("shop-select");
+                var selectedOption = selectElement.options[selectElement.selectedIndex];
+
+                
+                var shopName = selectedOption.value || "-";
+                var shopLocation = selectedOption.getAttribute("data-location") || "-";
+                var shopCategory = selectedOption.getAttribute("data-category") || "-";
+                var title = selectedOption.getAttribute("data-title") || "-";
+                var shopDescription = selectedOption.getAttribute("data-description") || "-";
+                var start = selectedOption.getAttribute("data-startdate") || "-";
+                var end = selectedOption.getAttribute("data-enddate") || "-";
+
+               
+                document.getElementById("shop-name").innerText = shopName;
+                document.getElementById("shop-location").innerText = shopLocation;
+                document.getElementById("shop-category").innerText = shopCategory;
+                document.getElementById("title").innerText = title;
+                document.getElementById("shop-description").innerText = shopDescription;
+                document.getElementById("start-date").innerText = start;
+                document.getElementById("end-date").innerText = end;
+            }
+
+    </script>
+
+    <style>
+        main {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            min-height: calc(95vh - 119.44px - 75.33px);
+        }
+
+         #shop-info{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;    
+        }
+
+        .shop-select {
+             padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            width: 50%;
+            margin-bottom: 30px;
+            text-align: center;
+            justify-content: center;
+            }
+        
+        .box{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; 
+        }
+    </style>
+
+</body>
+
+</html>

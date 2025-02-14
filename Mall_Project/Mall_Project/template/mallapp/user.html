@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/user.css' %}">
+</head>
+
+<body>
+    <header>
+        <img src="{% static 'images/logo.png' %}" alt="GRR Mall Logo" class="logo">
+        <h1>User Dashboard</h1>
+    </header>
+    <main id="category-wise-action-content">
+        <h2>Explore Products</h2>
+        <div class="category-wise-action-content">
+            <a href="/userlistofshop">
+                <button id="list-shop">Filter & List of shop Details</button>
+            </a>
+            <a href="/usershopwiseoffers">
+                <button id="shop-wise">Shop Wise Offers</button>
+            </a>
+            <a href="/userfloorwise">
+                <button id="floor-wise">Floor Wise Details</button>
+            </a>
+            <a href="/userviewshop">
+                <button id="view-shop">View Shop Details</button>
+            </a>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 GRR Mall. All rights reserved.</p>
+    </footer>
+    
+<style>
+    main {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        min-height: calc(90vh - 122px - 70.67px);
+    }
+</style>
+</body>
+
+</html>

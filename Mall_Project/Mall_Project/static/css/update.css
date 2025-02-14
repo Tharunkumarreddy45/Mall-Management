@@ -1,0 +1,70 @@
+body{
+    background-color: #8EC5FC;
+background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.update{
+    height: 90vh;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid black;
+    border-radius: 15px;
+    background-color: #0093E9;
+background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+;
+}
+
+.custom-button {
+        background: linear-gradient(45deg, #0f7ce3, #5ec3ff);
+        color: black;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .custom-button:hover {
+        background: linear-gradient(45deg, #0c8fc4, #40b0f0);
+        transform: scale(1.05);
+        box-shadow: 3px 5px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .custom-button:active {
+        transform: scale(0.98);
+        box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+@media screen and (max-width: 1024px) {
+    .update {
+        width: 70vw;
+        height: 80vh;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .update {
+        width: 80vw;
+        height: 75vh;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .update {
+        width: 90vw;
+        height: 70vh;
+        border-width: 3px;
+    }
+}

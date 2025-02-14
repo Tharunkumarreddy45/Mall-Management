@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Offer Details</title>
+    <link rel="stylesheet" href="{% static 'css/admin-manage-offers.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Manage Offer Details</h1>
+    </header>
+
+    <main>
+        <!-- Add Offer Form -->
+        <section id="add-offer">
+            <h2>Add New Offer</h2>
+            <form method="POST" id="offer-form">
+                {% csrf_token %}
+            
+                <div class="form-group">
+                    <label for="shop-name">Offer Shop Name:</label>
+                    <input type="text" id="shop-name" name="offershopname" placeholder="Enter shop name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="shop-location">Offer Shop Location:</label>
+                    <input type="text" id="shop-location" name="offershoplocation" placeholder="Enter shop location in mall" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="shop-category">Offer Shop Category:</label>
+                    <select class="offerselect" id="shop-category" name="offercategory" required>
+                        <option value="">Select Category</option>
+                        <option value="Food">Food</option>
+                        <option value="Electronics & Gadgets">Electronics & Gadgets</option>
+                        <option value="Fashion">Fashion</option>
+                        <option value="Home">Home</option>
+                        <option value="Books & Stationery">Books & Stationery</option>
+                        <option value="Toys & Games">Toys & Games</option>
+                        <option value="Supermarkets">Supermarkets</option>
+                        <option value="Entertainment">Entertainments</option>
+                        <option value="Health & Wellness">Health & Wellness</option>
+                        <option value="Services">Services</option>
+                        <option value="Jewelry & Watches">Jewelry & Watches</option>
+                        <option value="Events & Exhibition Spaces">Events & Exhibition Spaces</option>
+                        <option value="Co-Working & Business Spaces">Co-Working & Business Spaces</option>
+                        <option value="Salon">Salon</option>
+                        <option value="Beauty parlour">Beauty parlour</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="offer-title">Offer Title:</label>
+                    <input type="text" id="offer-title" name="offertitle" placeholder="Enter offer title" required>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="offer-description">Offer Description:</label>
+                    <textarea id="offer-description" name="offerdescription" placeholder="Enter offer description" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="offer-validity">Offer Start Date:</label>
+                    <input type="date" id="offer-validity" name="offerstartdate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="offer-validity">Offer End Date:</label>
+                    <input type="date" id="offer-validity" name="offerenddate" required>
+                </div>
+
+                <button type="submit">Add Offer</button>
+            </form>
+            <div>
+                {% if messages %}
+                {% for message in messages %}
+                <p style="color: blue">&nbsp;&nbsp;{{message }}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </section>
+
+        <!-- Offer List -->
+        <section id="offer-list">
+            <h2>Offer List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Shop Name</th>
+                        <th>Shop Location</th>
+                        <th>Shop Category</th>
+                        <th>Title</th>
+                        <th>Offer</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                
+                {% for offer in offer %}
+                <tr>
+                    <td>{{ offer.offershopname }}</td>
+                    <td>{{ offer.offershoplocation }}</td>
+                    <td>{{ offer.offercategory }}</td>
+                    <td>{{ offer.offertitle }}</td>
+                    <td>{{ offer.offerdescription }}</td>
+                    <td>{{ offer.offerstartdate }}</td>
+                    <td>{{ offer.offerenddate }}</td>
+                    <td>
+                        <button style="background-color: blue;"><a style="color: white; text-decoration: none;"
+                                href="/updateoffer/{{offer.id}}">Update</a></button><br><br>
+                        <button style="background-color: red;"><a style="color: white; text-decoration: none;"
+                                href="/deleteoffer/{{offer.id}}">Delete</a></button>
+                    </td>
+                    
+                </tr>
+                {% endfor %}
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 GRR Mall. All rights reserved.</p>
+    </footer>
+
+    
+    <style>
+        main {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            min-height: calc(100vh - 119.44px - 75.33px);
+        }
+
+        .offerselect{
+            padding: 13px;
+            color: #555;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>update Offer Page</title>
+    <link rel="stylesheet" href="{% static 'css/update.css' %}">
+</head>
+<body>
+    <div class="update">
+        <h1>Offer Shop Details Update Form</h1>
+        <form method="post">
+            {{form.as_p}}
+            {% csrf_token %}
+            <input type="submit" value="Update Details" class="custom-button">
+        </form>
+        <div>
+            {% if messages %}
+            {% for message in messages %}
+            <p style="color: blue">&nbsp;&nbsp;{{message }}</p>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    
+</body>
+</html>

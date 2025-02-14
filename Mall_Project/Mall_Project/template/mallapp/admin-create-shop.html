@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Shop Details</title>
+    <link rel="stylesheet" href="{% static 'css/admin-create-shop.css' %}">
+</head>
+
+<body>
+    <header>
+        <h1>Create Shop Details</h1>
+    </header>
+
+    <main>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="shop-name">Shop Name:</label>
+                <input type="text" id="shop-name" name="shopname" placeholder="Enter shop name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="shop-location">Shop Location:</label>
+                <input type="text" id="shop-location" name="shoplocation" placeholder="Enter shop location" required>
+            </div>
+
+            <div class="form-group">
+                <label for="shop-category">Shop Category:</label>
+                <select id="shop-category" name="category" required>
+                    <option value="">Select Category</option>
+                    <option value="Food">Food</option>
+                    <option value="Electronics & Gadgets">Electronics & Gadgets</option>
+                    <option value="Fashion">Fashion</option>
+                    <option value="Home">Home</option>
+                    <option value="Books & Stationery">Books & Stationery</option>
+                    <option value="Toys & Games">Toys & Games</option>
+                    <option value="Supermarkets">Supermarkets</option>
+                    <option value="Entertainment">Entertainments</option>
+                    <option value="Health & Wellness">Health & Wellness</option>
+                    <option value="Services">Services</option>
+                    <option value="Jewelry & Watches">Jewelry & Watches</option>
+                    <option value="Events & Exhibition Spaces">Events & Exhibition Spaces</option>
+                    <option value="Co-Working & Business Spaces">Co-Working & Business Spaces</option>
+                    <option value="Salon">Salon</option>
+                    <option value="Beauty parlour">Beauty parlour</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="shop-description">Shop Description:</label>
+                <textarea id="shop-description" placeholder="Enter shop description" name="shopdescription" rows="4"></textarea>
+            </div>
+
+            <button type="submit">Create Shop</button>
+        </form>
+
+        <div>
+            {% if messages %}
+            {% for message in messages %}
+            <p style="color: blue">&nbsp;&nbsp;{{message }}</p>
+            {% endfor %}
+            {% endif %}
+        </div>
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2025 GRR Mall. All rights reserved.</p>
+    </footer>
+
+    
+    <style>
+        main {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            min-height: calc(100vh - 119.44px - 75.33px);
+        }
+    </style>
+</body>
+
+</html>

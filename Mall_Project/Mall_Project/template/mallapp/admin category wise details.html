@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/admin category wise details.css' %}">
+    
+</head>
+
+<body>
+    <header>
+        <img src="{% static 'images/logo.png' %}" alt="Super Mall Logo" class="logo">
+        <h1>Admin Dashboard</h1>
+    </header>
+    <main id="admin-content">
+        <h2>Manage Super Mall</h2>
+        <div class="admin-actions">
+            <a href="/admincreateshop">
+                <button id="create-shop">Create Shop Details</button>
+            </a>
+            <a href="/adminmanageshop">
+                <button id="manage-shops">Manage Shop Details</button>
+            </a>
+            <a href="/adminmanageoffers">
+                <button id="manage-offers">Manage Offers Details</button>
+            </a>
+            <a href="/adminmanagecategoryfloor">
+                <button id="manage-categories">Manage Category & Floor</button>
+                <a>
+        </div>
+        <div id="admin-action-content"></div>
+    </main>
+    <footer>
+        <p>&copy; 2025 GRR Mall. All rights reserved.</p>
+    </footer>
+    
+    <style>
+        main {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            min-height: calc(84vh - 119.44px - 75.33px);
+        } 
+    </style>
+</body>
+
+</html>

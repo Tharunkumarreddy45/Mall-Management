@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Shop Details</title>
+    <link rel="stylesheet" href="{% static 'css/user-list-of-shop.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>List of Shop Details</h1>
+    </header>
+
+    <main style="min-height: calc(89vh - 199.44px - 75.33px);">
+        <!-- Search Bar -->
+    <section id="search-bar">
+        <input type="text" id="search-input" placeholder="Filter shop by name or category">
+        <!-- <button id="search-button" onclick="searchShops()">Filter</button> -->
+    </section>
+
+        <section id="shop-list">
+            <h2>Shops</h2>
+            <div id="shop-container">
+                <table border="3">
+                    <thead>
+                        <tr>
+                            <th>Shop Name</th>
+                            <th>Location</th>
+                            <th>Category</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody id="shop-info">
+                        {% for shop in usershop %}
+                        <tr class="shop-row" data-name="{{ shop.shopname|lower }}"
+                            data-category="{{ shop.shopcategory|lower }}">
+                            <td>{{ shop.shopname }}</td>
+                            <td>{{ shop.shoplocation }}</td>
+                            <td>{{ shop.shopcategory }}</td>
+                            <td>{{ shop.shopdescription }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+
+    <footer>
+        <p>&copy; 2025 GRR Mall. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function searchShops() {
+                var searchInput = document.getElementById("search-input").value.toLowerCase();
+                var rows = document.querySelectorAll(".shop-row");
+
+                rows.forEach(row => {
+                    var shopName = row.getAttribute("data-name");
+                    var shopCategory = row.getAttribute("data-category");
+
+                    if (shopName.includes(searchInput) || shopCategory.includes(searchInput) || searchInput === "") {
+                        row.style.display = "";
+                    } else {
+                        row.style.display = "none";
+                    }
+                });
+            }
+
+            // Enable real-time search as user types
+            document.getElementById("search-input").addEventListener("keyup", searchShops);
+    </script>
+
+<style>
+    main {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        height: 66vh;
+    }
+
+</style>
+</body>
+
+</html>

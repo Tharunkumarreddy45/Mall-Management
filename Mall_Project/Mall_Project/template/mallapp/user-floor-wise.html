@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floor Wise Details</title>
+    <link rel="stylesheet" href="{% static 'css/user-floor-wise.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Floor Wise Details</h1>
+    </header>
+
+    <main>
+        <!-- <section id="select-shop">
+            <h2>Select Floor Number</h2>
+            <select name="selectedshop" class="shop-select" id="shop-select" onchange="displayFCDetails()">
+                <option value="">Choose a Floor</option>
+                {% for f in floors %}
+                <option value="{{ f.floor }}" 
+                    data-category="{{ f.category }}" >
+                    {{ f.floor }}
+                </option>
+                {% endfor %}
+            </select>
+        </section>
+
+       
+        
+        <section id="shop-details">
+            <h2>Floor & Category Information</h2>
+            <div id="shop-info">
+                <p><strong>Floor:</strong> <span id="floor">-</span></p>
+                <p><strong>Category:</strong> <span id="category">-</span></p>
+            </div>
+        </section>
+        -->
+
+        <section id="shop-details">
+            <h2>Floor & Category List</h2>
+            <div id="shop-info">
+                <table border="3">
+                    
+                        <tr>
+                            <th>Floor Number</th>
+                            <th>Category</th>
+                        </tr>
+                    
+                  
+                        {% for f in floors %}
+                        <tr>
+                            <td>{{ f.floor }}</td>
+                            <td>{{ f.category }}</td>
+                        </tr>
+                        {% endfor %}
+                
+                </table>
+            </div>
+        </section>
+
+      
+    </main>
+
+    <footer>
+        <p>&copy; 2025 GRR Mall. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // function displayFCDetails() {
+        //         var selectElement = document.getElementById("shop-select");
+        //         var selectedOption = selectElement.options[selectElement.selectedIndex];
+
+                
+        //         var Floor = selectedOption.value || "-";
+              
+        //         var Category = selectedOption.getAttribute("data-category") || "-";
+               
+
+                
+        //         document.getElementById("floor").innerText = Floor;
+              
+        //         document.getElementById("category").innerText = Category;
+              
+        //     }
+    </script>
+            
+    <style>
+        main {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            min-height: calc(95vh - 119.44px - 75.33px);
+        }
+
+         #shop-info{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;    
+        }
+
+        .shop-select {
+             padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            width: 50%;
+            margin-bottom: 30px;
+            text-align: center;
+            justify-content: center;
+            }
+        
+        .box{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; 
+        }
+
+        td,th{
+            width: 20vw;
+        }
+    </style>
+</body>
+
+</html>

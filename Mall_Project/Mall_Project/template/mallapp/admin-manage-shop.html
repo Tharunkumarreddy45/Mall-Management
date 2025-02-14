@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Shop Details</title>
+    <link rel="stylesheet" href="{% static 'css/admin-manage-shop.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Manage Shop Details</h1>
+    </header>
+
+    <main>
+        <section id="shop-list">
+            <h2>Shop List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Shop Name</th>
+                        <th>Location</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+    
+                {% for shop in shop %}
+                <tr>
+                    <td>{{shop.shopname}}</td>
+                    <td>{{shop.shoplocation}}</td>
+                    <td>{{shop.shopcategory}}</td>
+                    <td>{{shop.shopdescription}}</td>
+                    <td>
+                        <button style="background-color: blue;"><a style="color: white; text-decoration: none;" href="/update/{{shop.id}}">Update</a></button><br><br>
+                        <button style="background-color: red;"><a style="color: white; text-decoration: none;" href="/delete/{{shop.id}}">Delete</a></button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 GRR Mall. All rights reserved.</p>
+    </footer>
+
+    
+    <style>
+        main {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            min-height: calc(94vh - 119.44px - 75.33px);
+        }
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRR Mall - Choose Role</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+    <header>
+        <img src="{% static 'images/logo.png' %}" alt="Super Mall Logo" class="logo">
+        <h1>GRR Mall</h1>
+    </header>
+    <main>
+        <h2>Select Your Role</h2>
+        <div class="role-selection">
+            <a href="adminlogin/" class="role-card">
+                <h3>Admin</h3>
+                <p>Login</p>
+            </a>
+            <a href="user/" class="role-card">
+                <h3>User</h3>
+                <p>Category Wise Details</p>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 GRR Mall. All rights reserved.</p>
+    </footer>
+
+<style>
+main {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  min-height: calc(90vh - 122px - 70.67px);
+}
+</style>
+</body>
+
+</html>
